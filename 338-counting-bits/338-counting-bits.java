@@ -1,7 +1,15 @@
-defmodule Solution do
-  @spec count_bits(n :: integer) :: [integer]
-  def count_bits(n) do
-        for i <- 0..n, do: i |>
-                           Integer.digits(2) |> Enum.sum()
-  end
-end
+class Solution {
+    public int[] countBits(int n) {
+         
+        int[] res = new int[n+1];
+        
+        for(int i = 1; i <= n ; i++) {
+            if(i % 2 == 0)
+                res[i] = res[i >> 1];
+            else
+                res[i] = res[i >> 1] + 1;
+        }
+        
+        return res;
+    }
+}
